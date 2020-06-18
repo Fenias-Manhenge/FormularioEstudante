@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
+using System.Collections;
 
 namespace FormularioEstudante
 {
@@ -90,7 +91,6 @@ namespace FormularioEstudante
             {
                 String path = @"Provider = Microsoft.ACE.OLEDB.12.0;Data Source = C:\bdAulas\Estudante1.accdb";
 
-
                 connection = new OleDbConnection(path);
 
                 //MessageBox.Show("Conectou com sucesso", "Conexão", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -112,6 +112,61 @@ namespace FormularioEstudante
             txtName.Clear();
             txtClass.Clear();
             txtContact.Clear();
+        }
+
+        public static ArrayList recoverStudent()
+        {
+            OleDbConnection connection = connect();
+            OleDbDataReader read = null;
+            OleDbCommand command = null;
+
+            ArrayList student = new ArrayList();
+
+            try
+            {
+                connection.Open();
+
+                string selection = "select* From Estudante1";
+
+                command = new OleDbCommand(selection, connection);
+
+                read = command.ExecuteReader();
+
+                while (read.Read())
+                {
+                    student.Add(new ModelEstudante(read.GetInt32(0), read.GetString(1),
+                        read.GetString(2), read.GetString(3)));
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erro na solicitação de dados: " + e.Message, "DADOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return student;
+        }
+
+        private void btnList_Click(object sender, EventArgs e)
+        {
+            ArrayList student = recoverStudent();
+
+            lstList.Items.Clear();
+
+            foreach (ModelEstudante studentModel in student)
+            {
+                ListViewItem lstVItem = new ListViewItem();
+
+                lstVItem.Text = studentModel.GetCodigo() + "";
+
+                lstVItem.SubItems.Add(studentModel.GetNome());
+                lstVItem.SubItems.Add(studentModel.GetTurma());
+                lstVItem.SubItems.Add(studentModel.GetContacto());
+
+                lstList.Items.Add(lstVItem);
+            }
         }
     }
 }

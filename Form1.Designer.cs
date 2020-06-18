@@ -38,6 +38,12 @@
             this.txtContact = new System.Windows.Forms.TextBox();
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.btnList = new System.Windows.Forms.Button();
+            this.lstList = new System.Windows.Forms.ListView();
+            this.lstCode = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lstName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lstClass = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lstContact = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // label1
@@ -117,18 +123,66 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(333, 52);
+            this.btnCancel.Location = new System.Drawing.Point(333, 83);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(89, 23);
             this.btnCancel.TabIndex = 9;
             this.btnCancel.Text = "CANCELAR";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
+            // btnList
+            // 
+            this.btnList.Location = new System.Drawing.Point(333, 54);
+            this.btnList.Name = "btnList";
+            this.btnList.Size = new System.Drawing.Size(89, 23);
+            this.btnList.TabIndex = 10;
+            this.btnList.Text = "Listar";
+            this.btnList.UseVisualStyleBackColor = true;
+            this.btnList.Click += new System.EventHandler(this.btnList_Click);
+            // 
+            // lstList
+            // 
+            this.lstList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lstCode,
+            this.lstName,
+            this.lstClass,
+            this.lstContact});
+            this.lstList.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstList.HideSelection = false;
+            this.lstList.Location = new System.Drawing.Point(53, 162);
+            this.lstList.Name = "lstList";
+            this.lstList.Size = new System.Drawing.Size(620, 171);
+            this.lstList.TabIndex = 11;
+            this.lstList.UseCompatibleStateImageBehavior = false;
+            this.lstList.View = System.Windows.Forms.View.Details;
+            // 
+            // lstCode
+            // 
+            this.lstCode.Text = "CODIGO";
+            this.lstCode.Width = 117;
+            // 
+            // lstName
+            // 
+            this.lstName.Text = "NOME";
+            this.lstName.Width = 265;
+            // 
+            // lstClass
+            // 
+            this.lstClass.Text = "TURMA";
+            this.lstClass.Width = 103;
+            // 
+            // lstContact
+            // 
+            this.lstContact.Text = "CONTACTO";
+            this.lstContact.Width = 132;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lstList);
+            this.Controls.Add(this.btnList);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnCadastrar);
             this.Controls.Add(this.txtContact);
@@ -159,6 +213,12 @@
         private System.Windows.Forms.TextBox txtContact;
         private System.Windows.Forms.Button btnCadastrar;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnList;
+        private System.Windows.Forms.ListView lstList;
+        private System.Windows.Forms.ColumnHeader lstCode;
+        private System.Windows.Forms.ColumnHeader lstName;
+        private System.Windows.Forms.ColumnHeader lstClass;
+        private System.Windows.Forms.ColumnHeader lstContact;
     }
 }
 

@@ -160,13 +160,17 @@ namespace FormularioEstudante
                 ListViewItem lstVItem = new ListViewItem();
 
                 lstVItem.Text = studentModel.GetCodigo() + "";
-
                 lstVItem.SubItems.Add(studentModel.GetNome());
                 lstVItem.SubItems.Add(studentModel.GetTurma());
                 lstVItem.SubItems.Add(studentModel.GetContacto());
 
                 lstList.Items.Add(lstVItem);
             }
+        }
+
+        private void vScrollBar1_Scroll(object sender, ScrollEventArgs e)
+        {
+
         }
     }
 }

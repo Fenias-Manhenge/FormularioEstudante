@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -149,9 +150,9 @@
             this.lstContact});
             this.lstList.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstList.HideSelection = false;
-            this.lstList.Location = new System.Drawing.Point(53, 162);
+            this.lstList.Location = new System.Drawing.Point(53, 173);
             this.lstList.Name = "lstList";
-            this.lstList.Size = new System.Drawing.Size(620, 171);
+            this.lstList.Size = new System.Drawing.Size(620, 251);
             this.lstList.TabIndex = 11;
             this.lstList.UseCompatibleStateImageBehavior = false;
             this.lstList.View = System.Windows.Forms.View.Details;
@@ -169,7 +170,7 @@
             // lstClass
             // 
             this.lstClass.Text = "TURMA";
-            this.lstClass.Width = 103;
+            this.lstClass.Width = 96;
             // 
             // lstContact
             // 
@@ -180,6 +181,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.lstList);
             this.Controls.Add(this.btnList);

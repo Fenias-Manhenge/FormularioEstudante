@@ -172,5 +172,79 @@ namespace FormularioEstudante
         {
 
         }
+
+        private void btnApagar_Click(object sender, EventArgs e)
+        {
+            OleDbCommand command = null;
+
+            OleDbConnection connection = connect();
+
+            int code = int.Parse(txtCode.Text);
+
+            try
+            {
+                connection.Open();
+
+                string remove = "delete FROM estudante1 where CODIGO=?;";
+
+                command = new OleDbCommand(remove, connection);
+
+                command.Parameters.Add(new OleDbParameter("CODIGO", code));
+
+                command.ExecuteNonQuery();
+
+                MessageBox.Show("Remocao feita com sucesso!", "Eliminação");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro na remoção: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            OleDbCommand command = null;
+
+            OleDbConnection connection = connect();
+
+            int code= int.Parse(txtCode.Text);
+            string nome = txtName.Text;
+            string turma = txtClass.Text;
+            string contacto = txtContact.Text;
+
+            try
+            {
+                connection.Open();
+
+                String update = "update Estudante1 set NOME=?,TURMA=?,CONTACTO=? where CODIGO=?;";
+
+                command = new OleDbCommand(update, connection);
+
+                command.Parameters.Add(new OleDbParameter("CODIGO", code));
+
+                command.Parameters.Add(new OleDbParameter("NOME", nome));
+
+                command.Parameters.Add(new OleDbParameter("TURMA", turma));
+
+                command.Parameters.Add(new OleDbParameter("CONTACTO", contacto));
+
+                command.ExecuteNonQuery(); clean();
+
+                MessageBox.Show("ACTUALIZACAO FEITA COM SUCESSO!", "UPDATE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro na Actualização: " + ex.Message, "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
     }
 }
